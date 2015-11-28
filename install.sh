@@ -1,36 +1,67 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# get current directory
-location=$(dirname $0)
-echo $location
-# files which have to be added
-files_to_add=(".vimrc.vim" ".bash_bindings" ".inputrc")
-#destination_files=(".vimrc" ".bash_profile" ".inputrc")
-destination_files=("a" "b" "c")
-#home=${HOME}
-home=$location
+# sript exits when command fails (to accept fail use || true)
+set -o errexit		# set -e
+# exit status of last command that threw non-zero exit code is returned
+set -o pipefail		
+# exit when script tries to use undeclared variable
+set -o nounset 		# set -u
+# debbuging trace
+set -o xtrace 		# set -x
 
-# loop thorugh all files
-# get nr of elementes
-indices=${!files_to_add[*]} 
+# get directories
+source_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+__file="${source_dir}/$(basename "${BASH_SOURCE[0]}")"
+__base="$(basename ${__file} .sh)"
 
-for index in $indices; do
+dest_dir=${HOME}
+#dest_dir=${source_dir}
 
-	destination="$home/${destination_files[$index]}"
-	echo $destination
-
-	# check if file exists
-    if [ -f "$destination_file" ]; then
-		# append to it correct path
-		echo "exist"
-	else echo "else";
-		# create file
-		touch $destination
+# first argument - expression, second destination file
+function append_to_file {
+	expression1=$1
+	dest_file1=$2
+	if ! grep "$expression1" "$dest_file1"; then
+		echo "${expression1}" >> "${dest_file1}"
 	fi
+}
 
-	echo ${files_to_add[$index]}
-	echo ${destination_files[$index]}
-done
+############# modify .vimrc
+dest_file="${dest_dir}/.vimrc"
+source_file="${source_dir}/.vimrc.vim"
 
-# check if files exists
-#if [ -f ]
+if [ ! -f "${dest_file}" ]; then
+	touch "${dest_file}"
+fi
+
+# search and if not append path to file from repo
+expression="so: ${source_file}"
+append_to_file "$expression" "$dest_file"
+
+############## modify .bash_profile
+dest_file="${dest_dir}/.bash_profile"
+source_file="${source_dir}/.bash_binding"
+
+if [ ! -f "${dest_file}" ]; then
+	touch "${dest_file}"
+	help_file="${dest_dir}/.bashrc"
+
+	expression="source ${dest_dir}/.bash_profile"
+	append_to_file "$expression" "${help_file}"
+	unset help_file
+fi
+
+expression="source ${source_file}"
+append_to_file "$expression" "$dest_file"
+
+############### modify .inputrc
+
+dest_file="${dest_dir}/.inputrc"
+source_file="${source_dir}/.inputrc"
+
+if [ ! -f "${dest_file}" ]; then
+	touch "${dest_file}"
+fi
+
+expresion="\$include ${source_file}"
+append_to_file "$expression" "$dest_file"
