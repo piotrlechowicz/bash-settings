@@ -10,7 +10,7 @@ Due to the problems with tabulation in python interpreter they don't switch key 
 
 Instalation of vim in ubuntu
 
-`$ sudo apt-get install vim`
+> `$ sudo apt-get install vim`
 
 Clone the repository and source this files inside yours `.inputrc`, `.vimrc` and `.bashrc`.
 
@@ -21,4 +21,8 @@ in yours `.bashrc` add following line <br />
 
 where `<path-to-repo>` is path where you cloned the repository
 
+####4. Add .bash_binding
+
+in yours `.bash_profile` or `.bashrc` file add following line: <br />
+> `source <path-to-repo>/.bash_binding` <br />
 
