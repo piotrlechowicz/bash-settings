@@ -31,7 +31,7 @@ In yours `~/.bash_profile` or `.bashrc` file add the following line: <br />
 In yours `~/.inputrc` file add the following line: <br />
 > `$include <path-to-repo>/.inputrc` <br />
 
-####6. Installation through scripts
+####6. Initialization through script
 
 Folder contains script `install.sh`. In order to use it you have to assign to it execute permission: <br />
 > `$ chmod +x install.sh` <br />
@@ -39,7 +39,7 @@ Folder contains script `install.sh`. In order to use it you have to assign to it
 And run it: <br />
 > `$ ./install.sh` </br>
 
-####7. Uninstallation
+####7. Remove through script
 In order to uninstall do the following: <br />
 > `$ chmod +x uninstall.sh` <br />
 > `$ ./uninstall.sh`
