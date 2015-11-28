@@ -16,13 +16,18 @@ Clone the repository and source this files inside yours `.inputrc`, `.vimrc` and
 
 ####3. Add .vimrc.vim
 
-in yours `.bashrc` add following line <br />
+In yours `~/.bashrc` add following line <br />
 >	`so: <path-to-repo>/.vimrc.vim` <br />
 
 where `<path-to-repo>` is path where you cloned the repository
 
 ####4. Add .bash_binding
 
-in yours `.bash_profile` or `.bashrc` file add following line: <br />
+In yours `~/.bash_profile` or `.bashrc` file add following line: <br />
 > `source <path-to-repo>/.bash_binding` <br />
+
+####5. Add .inputrc
+
+In yours `~/.inputrc` file add following line: <br />
+> `$include <path-to-repo>/.inputrc` <br />
 
