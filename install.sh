@@ -34,8 +34,8 @@ if [ ! -f "${dest_file}" ]; then
 	touch "${dest_file}"
 fi
 
-# search and if not append path to file from repo
-expression="so: ${source_file}"
+# search and if not found append path to file from repo
+expression="so ${source_file}"
 append_to_file "$expression" "$dest_file"
 
 ############## modify .bash_profile
