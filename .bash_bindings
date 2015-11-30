@@ -1,3 +1,7 @@
+# set vim as default editor
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
 # insert last argument with '.'
 bind -m vi-command ".":insert-last-argument
 # use ctrl + l to clear the screen
