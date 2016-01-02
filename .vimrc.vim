@@ -12,5 +12,5 @@ imap <C-a> <Home>
 inoremap jj <ESC> 
 imap <C-j> <ESC>
 "exit without saving with qw
-cmap qw q!
+cmap q1 q!
 
