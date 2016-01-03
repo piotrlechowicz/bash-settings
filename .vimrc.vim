@@ -2,6 +2,9 @@
 set autoindent
 set tabstop=4
 
+"set toggle paste mode"
+set pastetoggle=<F2>
+
 "color scheme
 colorscheme default 
 "additional key bindings
