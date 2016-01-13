@@ -17,3 +17,6 @@ imap <C-j> <ESC>
 "exit without saving with qw
 cmap q1 q!
 
+if &diff
+  colorscheme ron
+endif
