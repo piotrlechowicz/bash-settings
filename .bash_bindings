@@ -3,13 +3,13 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 
 # insert last argument with '.'
-bind -m vi-command ".":insert-last-argument
+#bind -m vi-command ".":insert-last-argument
 # use ctrl + l to clear the screen
-bind -m vi-insert "\c-l.":clear-screen
+#bind -m vi-insert "\c-l.":clear-screen
 # ctrl + a go to the start of line
-bind -m vi-insert "\c-a.":beginning-of-line
+#bind -m vi-insert "\c-a.":beginning-of-line
 # ctrl + e go to the end of line
-bind -m vi-insert "\C-e.":end-of-line
+#bind -m vi-insert "\C-e.":end-of-line
 # ctrl + w kill previous word
-bind -m vi-insert "\C-w.":backward-kill-word
+#bind -m vi-insert "\C-w.":backward-kill-word
 
