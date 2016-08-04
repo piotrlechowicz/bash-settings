@@ -38,3 +38,7 @@ endif
 
 "enable mouse
 set mouse=a
+
+if &diff
+  colorscheme ron
+endif

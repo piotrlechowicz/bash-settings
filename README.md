@@ -16,7 +16,7 @@ Clone the repository and source this files inside yours `.inputrc`, `.vimrc` and
 
 ####3. Add .vimrc.vim
 
-In yours `~/.bashrc` add the following line <br />
+In yours `~/.vimrc` add the following line <br />
 >	`so <path-to-repo>/.vimrc.vim` <br />
 
 where `<path-to-repo>` is path where you cloned the repository
