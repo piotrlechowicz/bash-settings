@@ -3,43 +3,59 @@
 
 ####1. Overview
 
-This repository contains files which are used to configure bash that it uses vim key bindings.
-Due to the problems with tabulation in python interpreter they don't switch key bindings in it.
+Configuration of vim and bash bindings. Useful indings for tmux.
 
-####2. Installation of vim
+####2. How to install
 
-Instalation of vim in ubuntu
+Clone the repository and source this files inside yours `.inputrc`, `.vimrc`, `.bashrc` and `.tmux.conf`.
+
+###### Installation through script
+
+Alternatively you can install it through script:
+
+> Folder contains script `install.sh`. In order to use it you have to assign to it execute permission: <br />
+> > `$ chmod +x install.sh` <br />
+
+> And run it: <br />
+> > `$ ./install.sh` </br>
+
+###### Uninstallation
+
+> In order to uninstall do the following: <br />
+> > `$ chmod +x uninstall.sh` <br />
+> > `$ ./uninstall.sh`
+
+####3. Installation of vim and tmux
+
+Instalation of vim and tmux in ubuntu 14
 
 > `$ sudo apt-get install vim`
+> `$ sudo apt-get install tmux`
 
-Clone the repository and source this files inside yours `.inputrc`, `.vimrc` and `.bashrc`.
+In fedora 23
 
-####3. Add .vimrc.vim
+> `$ sudo dnf install vim`
+> `$ sudo dnf install tmux`
+
+####4. Manual addition of files
+
+######4.1 Add .vimrc.vim
 
 In yours `~/.vimrc` add the following line <br />
 >	`so <path-to-repo>/.vimrc.vim` <br />
 
 where `<path-to-repo>` is path where you cloned the repository
 
-####4. Add .bash_binding
+######4.2 Add .bash_binding
 
 In yours `~/.bash_profile` or `.bashrc` file add the following line: <br />
 > `source <path-to-repo>/.bash_binding` <br />
 
-####5. Add .inputrc
+######4.3 Add .inputrc
 
 In yours `~/.inputrc` file add the following line: <br />
 > `$include <path-to-repo>/.inputrc` <br />
 
-####6. Initialization through script
+######4.4 Add .tmux.conf
 
-Folder contains script `install.sh`. In order to use it you have to assign to it execute permission: <br />
-> `$ chmod +x install.sh` <br />
-
-And run it: <br />
-> `$ ./install.sh` </br>
-
-####7. Remove through script
-In order to uninstall do the following: <br />
-> `$ chmod +x uninstall.sh` <br />
-> `$ ./uninstall.sh`
+TODO: how to do it
