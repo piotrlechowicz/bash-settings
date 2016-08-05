@@ -51,7 +51,13 @@ dest_file="${dest_dir}/.inputrc"
 source_file="${source_dir}/.inputrc"
 
 if [ -f "${dest_file}" ]; then
-    expresion="\$include ${source_file}"
+    expression="\$include ${source_file}"
     remove_from_file "$expression" "$dest_file"
 fi
 
+############## rm .tux.conf
+dest_file="${dest_dir}/.tmux.conf"
+
+if [ -f "${dest_file}" ]; then
+	rm ${dest_file}
+fi

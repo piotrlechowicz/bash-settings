@@ -18,12 +18,12 @@ dest_dir=${HOME}
 #dest_dir=${source_dir}
 
 # first argument - expression, second destination file
-function append_to_file {
-	expression1=$1
-	dest_file1=$2
-	if ! grep "$expression1" "$dest_file1"; then
-		echo "${expression1}" >> "${dest_file1}"
-	fi
+function append_to_file_if_not_exist {
+    expression1=$1
+    dest_file1=$2
+    if ! grep "$expression1" "$dest_file1"; then
+    	echo "${expression1}" >> "${dest_file1}"
+    fi
 }
 
 ############# modify .vimrc
@@ -31,28 +31,28 @@ dest_file="${dest_dir}/.vimrc"
 source_file="${source_dir}/.vimrc.vim"
 
 if [ ! -f "${dest_file}" ]; then
-	touch "${dest_file}"
+    touch "${dest_file}"
 fi
 
 # search and if not found append path to file from repo
 expression="so ${source_file}"
-append_to_file "$expression" "$dest_file"
+append_to_file_if_not_exist "$expression" "$dest_file"
 
 ############## modify .bash_profile
 dest_file="${dest_dir}/.bash_profile"
 source_file="${source_dir}/.bash_binding"
 
 if [ ! -f "${dest_file}" ]; then
-	touch "${dest_file}"
-	help_file="${dest_dir}/.bashrc"
+    touch "${dest_file}"
+    help_file="${dest_dir}/.bashrc"
 
-	expression="source ${dest_dir}/.bash_profile"
-	append_to_file "$expression" "${help_file}"
-	unset help_file
+    expression="source ${dest_dir}/.bash_profile"
+    append_to_file_if_not_exist "$expression" "${help_file}"
+    unset help_file
 fi
 
 expression="source ${source_file}"
-append_to_file "$expression" "$dest_file"
+append_to_file_if_not_exist "$expression" "${dest_file}"
 
 ############### modify .inputrc
 
@@ -60,8 +60,20 @@ dest_file="${dest_dir}/.inputrc"
 source_file="${source_dir}/.inputrc"
 
 if [ ! -f "${dest_file}" ]; then
-	touch "${dest_file}"
+    touch "${dest_file}"
 fi
 
-expresion="\$include ${source_file}"
-append_to_file "$expression" "$dest_file"
+expression="\$include ${source_file}"
+append_to_file_if_not_exist "$expression" "${dest_file}"
+
+############### adding .tmux.conf
+
+dest_file="${dest_dir}/.tmux.conf"
+source_file="${source_dir}/.tmux.conf"
+
+if [ -f "${dest_file}" ]; then
+    ${dest_file} >> ${source_file}
+    rm ${dest_file}
+fi
+
+ln -s "${source_file}" "${dest_file}"

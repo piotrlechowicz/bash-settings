@@ -23,19 +23,19 @@ Alternatively you can install it through script:
 
 > In order to uninstall do the following: <br />
 > > `$ chmod +x uninstall.sh` <br />
-> > `$ ./uninstall.sh`
+> > `$ ./uninstall.sh` <br/>
 
 ####3. Installation of vim and tmux
 
 Instalation of vim and tmux in ubuntu 14
 
-> `$ sudo apt-get install vim`
-> `$ sudo apt-get install tmux`
+> `$ sudo apt-get install vim` <br/>
+> `$ sudo apt-get install tmux` <br/>
 
 In fedora 23
 
-> `$ sudo dnf install vim`
-> `$ sudo dnf install tmux`
+> `$ sudo dnf install vim` <br/>
+> `$ sudo dnf install tmux` <br/>
 
 ####4. Manual addition of files
 
@@ -58,4 +58,7 @@ In yours `~/.inputrc` file add the following line: <br />
 
 ######4.4 Add .tmux.conf
 
-TODO: how to do it
+Create symbolic linku to .tmux.conf <br/>
+> `ln -s <path-to-repo>/.tmux.conf ~/.tmux.conf
+
+And inside tmux you have to do: prefix + : source-file ~/.tmux.conf
