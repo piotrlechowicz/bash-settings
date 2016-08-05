@@ -62,3 +62,9 @@ Create symbolic linku to .tmux.conf <br/>
 > `ln -s <path-to-repo>/.tmux.conf ~/.tmux.conf
 
 And inside tmux you have to do: prefix + : source-file ~/.tmux.conf
+
+####5. Credit
+
+I did not create all the files.
+The tmux.conf is based on the article placed on:
+http://www.hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf/
