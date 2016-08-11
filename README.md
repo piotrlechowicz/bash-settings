@@ -7,7 +7,13 @@ Configuration of vim and bash bindings. Useful indings for tmux.
 
 ###2. How to install
 
-Clone the repository and source this files inside yours `.inputrc`, `.vimrc`, `.bashrc` and `.tmux.conf`.
+Clone the repository and source this files inside yours `.inputrc`, `.vimrc`, `.bashrc` and `.tmux.conf`. <br/>
+
+To use tmux plugins clone following repository:
+
+> $ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm 
+
+To run installed plugins you have to press `prefix + I`
 
 #### Installation through script
 
