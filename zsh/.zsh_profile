@@ -1,0 +1,31 @@
+#----------------------------------- java
+export JAVA_HOME=/home/plechowicz/Development/java/java
+export JAVA=$JAVA_HOME/bin/java
+
+export PATH=$JAVA_HOME/bin:$PATH
+
+export JAVA7_HOME=/home/plechowicz/Development/java/java7
+export JAVA7=$JAVA7_HOME/bin/java
+
+
+#------------------------------------ maven
+export M2_HOME=/home/plechowicz/Development/maven/maven
+export M2=$M2_HOME/bin
+export MAVEN_OPTS="-Xms256m -Xmx512m"
+
+export PATH=$M2:$PATH
+
+#------------------------------------ maven variables
+export MVN_SKIP_TEST="-Dmaven.test.skip=true"
+
+#------------------------------------ eclipse
+export PATH=/home/plechowicz/Development/eclipse/eclipse:$PATH
+
+#------------------------------------ texlive libraries
+export TEXMFHOME=~/.texmf
+
+#-------------------------------------bin
+export PATH=/home/plechowicz/bin:$PATH
+
+#-------------------------------------mc slow start
+alias mc='TERM=xterm mc'
