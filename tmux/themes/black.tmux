@@ -50,7 +50,7 @@ set-window-option -g window-status-activity-attr underscore
 
 # status line
 set-option -g status on
-set -g status-utf8 on
+#set -g status-utf8 on
 set -g status-justify centre
 set -g status-position bottom
 set -g status-interval 1		# update activity
