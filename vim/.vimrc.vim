@@ -12,7 +12,7 @@ syntax enable
 set number 
 
 "color scheme
-colorscheme koehler
+colorscheme elflord
 
 "additional key bindings
 "go to the end and begin of line
