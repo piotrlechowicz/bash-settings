@@ -1,0 +1,31 @@
+#!/usr/bin/bash
+
+# clean build directory if exists
+[ -d build ] && rm -r build
+mkdir build
+
+# find sources
+sources=$(find . -iname '*.cpp' -printf '%p ')
+
+dir_with_headers=$(find . -iname '*.h' -printf '%h\n' | sort --unique | tr '\n' ' ')
+
+# purify sources
+for f in $sources; do
+	sed -i '/#include.*"stdafx\.h"/d' $f
+done
+
+# create general CMakeLists if it doesn't exist
+if [ ! -f 'CMakeLists.txt' ]; then
+	cat > CMakeLists.txt << EOF
+cmake_minimum_required (VERSION 2.8.9)
+project (run)
+
+include_directories($dir_with_headers)
+
+add_executable(run ${sources})
+EOF
+fi
+
+cd build
+cmake ..
+make
