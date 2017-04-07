@@ -4,14 +4,37 @@
 [ -d build ] && rm -r build
 mkdir build
 
-# find sources
-sources=$(find . -iname '*.cpp' -printf '%p ')
+# change how command detect input file stream
+IFS_BAK="$IFS"
+IFS=$'\n'
 
-dir_with_headers=$(find . -iname '*.h' -printf '%h\n' | sort --unique | tr '\n' ' ')
+# find sources
+sources=$(find . -iname '*.cpp')
+
+#find headers
+headers=$(find . \( -iname '*.h' -o -iname '*.hpp' \))
+
+#find directories with headers
+dir_with_headers=$(find . -iname '*.h' -printf '%h\n' | sort --unique)
 
 # purify sources
+echo "Sources:"
 for f in $sources; do
-	sed -i '/#include.*"stdafx\.h"/d' $f
+	echo "$f"
+	#sed -i '/#include.*"stdafx\.h"/d' "$f"
+	sed -i 's/#include.*<tchar\.h>/#include <string>/g' "$f"
+	sed -i 's/#include.*<conio\.h>/#include <curses\.h>/g' "$f"
+done
+
+# purify headers
+echo "headers"
+for f in $headers; do
+	echo $f
+	#sed -i '/#include.*"stdafx\.h"/d' "$f"
+	sed -i '/#include.*"targetver\.h"/d' "$f"
+	sed -i '/#include.*<SDKDDKVer\.h>/d' "$f"
+	sed -i 's/#include.*<tchar\.h>/#include <string>/g' "$f"
+	sed -i 's/#include.*<conio\.h>/#include <curses\.h>/g' "$f"
 done
 
 # create general CMakeLists if it doesn't exist
@@ -20,12 +43,26 @@ if [ ! -f 'CMakeLists.txt' ]; then
 cmake_minimum_required (VERSION 2.8.9)
 project (run)
 
-include_directories($dir_with_headers)
+find_package(Curses REQUIRED)
 
-add_executable(run ${sources})
+include_directories("\${CURSES_INCLUDE_DIR}"
+	$(for f in $dir_with_headers; do
+	echo "\"$f\" "
+	done;)
+)
+
+add_executable(run $(for f in $sources; do
+	echo "\"$f\" "
+	done;)
+)
+
+target_link_libraries(run "\${CURSES_LIBRARIES}")
 EOF
 fi
 
 cd build
 cmake ..
 make
+
+# restore previos InputFileStream
+IFS="$IFS_BAK"
