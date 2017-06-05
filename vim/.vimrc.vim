@@ -5,6 +5,11 @@ set tabstop=4
 "allow to use pastetoggle mode with F2
 set pastetoggle=<f2>
 
+"allow to paste and copy with xclip
+:map <F6> :w !xclip<CR><CR>
+:vmap <F6> "*y
+:map <F7> :r !xclilp -o<CR><CR>
+
 "shows different languages syntax
 syntax enable
 
