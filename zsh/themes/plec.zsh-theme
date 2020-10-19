@@ -50,8 +50,7 @@ local exit_code="%(?,%?,%{$fg[red]%}%?%{$reset_color%})"
 default_host="dell-vostro"
 
 if [[ $HOST == $default_host ]]; then 
-PROMPT="
-%{$terminfo[bold]$fg[blue]%}#%{$reset_color%} \
+PROMPT="%{$terminfo[bold]$fg[blue]%}#%{$reset_color%} \
 %(#,%{$bg[yellow]%}%{$fg[black]%}%n%{$reset_color%},%{$fg[cyan]%}%n) \
 %{$fg[white]%}\
 %{$fg[white]%}in \
@@ -63,8 +62,7 @@ ${git_info}\
 
 else
 
-PROMPT="
-%{$terminfo[bold]$fg[blue]%}#%{$reset_color%} \
+PROMPT="%{$terminfo[bold]$fg[blue]%}#%{$reset_color%} \
 %(#,%{$bg[yellow]%}%{$fg[black]%}%n%{$reset_color%},%{$fg[cyan]%}%n)\
 %{$fg[white]%}@\
 %{$fg[green]%}%m \
